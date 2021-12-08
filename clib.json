@@ -1,0 +1,18 @@
+{
+  "name": "gatling",
+  "repo": "binRick/gatling",
+  "license": "MIT",
+  "description": "Gatling",
+  "keywords": ["Gatling"],
+  "makefile": "Makefile",
+  "install": "make install",
+  "uninstall": "echo uninstall",
+  "src": ["src/chan.c","src/chan.h","src/gatling.c","src/gatling.h","src/hashmap.c","src/hashmap.h","src/protocol.c","src/protocol.h","src/queue.c","src/queue.h","src/subscriptions.c","src/subscriptions.h"],
+  "dependencies": {
+    "clib/flag": "*"
+  },
+  "development": {
+    "jwerle/libok": "*"
+  },
+  "version": "0.1.0"
+}
