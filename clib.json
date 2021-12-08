@@ -3,13 +3,31 @@
   "repo": "binRick/gatling",
   "license": "MIT",
   "description": "Gatling",
-  "keywords": ["Gatling"],
+  "keywords": [
+    "Gatling"
+  ],
   "makefile": "Makefile",
   "install": "make install",
-  "uninstall": "echo uninstall",
-  "src": ["src/chan.c","src/chan.h","src/gatling.c","src/gatling.h","src/hashmap.c","src/hashmap.h","src/protocol.c","src/protocol.h","src/queue.c","src/queue.h","src/subscriptions.c","src/subscriptions.h"],
+  "uninstall": "make uninstall",
+  "src": [
+    "src/chan.c",
+    "src/chan.h",
+    "src/gatling.c",
+    "src/gatling.h",
+    "src/hashmap.c",
+    "src/hashmap.h",
+    "src/protocol.c",
+    "src/protocol.h",
+    "src/queue.c",
+    "src/queue.h",
+    "src/subscriptions.c",
+    "src/subscriptions.h"
+  ],
   "dependencies": {
-    "clibs/flag": "*"
+    "nami-doc/trim.c": "0.0.1",
+    "clibs/flag": "0.0.1",
+    "jwerle/strsplit.h": "0.1.1",
+    "Constellation/console-colors.c": "1.0.3"
   },
   "development": {
     "jwerle/libok": "*"
