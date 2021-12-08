@@ -1,1 +1,1 @@
-timeout 1 ./bin/gatling
+timeout 1 ./bin/gatling $@

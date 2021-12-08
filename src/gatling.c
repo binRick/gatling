@@ -5,17 +5,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdio.h>
 
 #include "chan.h"
 #include "gatling.h"
 #include "protocol.h"
 #include "subscriptions.h"
 
-#define GAT_PORT 9999
+#include "flag.h"
+#include "flag.c"
+
+#define VERSION "v1.0.0"
+#define DEFAULT_PORT 9997
 
 
 chan_t* pub_chan;
-
 
 // Frees the frame resources and zeroes out the pointer.
 void frame_dispose(frame_t* frame)
@@ -184,27 +188,27 @@ int start(int port)
     return 0;
 }
 
-int main(int argc, char** argv)
-{
-    pub_chan = chan_init(10000); // Probably tweak this...
-    if (pub_chan == NULL)
-    {
+int bind_port = DEFAULT_PORT;
+
+int *parse_args(int argc, char** argv){
+  int p = bind_port;
+  flag_int(&p, "port", "Port");
+  flag_parse(argc, argv, VERSION);
+  bind_port = p;
+  printf("         port:\t%d\n", bind_port);
+}
+
+int main(int argc, char** argv){
+    parse_args(argc, argv);
+    pub_chan = chan_init(10000);
+    if (pub_chan == NULL){
+        return -1;
+    }
+    if (subscriptions_init() != 0){
         return -1;
     }
 
-    if (subscriptions_init() != 0)
-    {
-        return -1;
-    }
-
-    int port = GAT_PORT;
-    if (argc > 1)
-    {
-        port = atoi(argv[1]);
-    }
-
-    int err = start(port);
-
+    int err = start(bind_port);
     chan_dispose(pub_chan);
     subscriptions_dispose();
     return err;
