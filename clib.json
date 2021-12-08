@@ -27,7 +27,10 @@
     "nami-doc/trim.c": "0.0.1",
     "clibs/flag": "0.0.1",
     "jwerle/strsplit.h": "0.1.1",
-    "Constellation/console-colors.c": "1.0.3"
+    "Constellation/console-colors.c": "1.0.3",
+    "willemt/file2str": "0.0.1",
+    "clibs/timestamp": "0.0.2",
+    "clibs/timer": "1.0.0"
   },
   "development": {
     "jwerle/libok": "*"
