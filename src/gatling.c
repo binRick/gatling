@@ -2,11 +2,13 @@
 #include <pthread.h>
 #include <resolv.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
+#include "github/jnguyen1098-seethe/seethe.h"
+#include "github/kalexey89-libdye/include/dye.h"
 #include "chan.h"
 #include "gatling.h"
 #include "protocol.h"
@@ -15,11 +17,12 @@
 #include "flag.h"
 #include "flag.c"
 
+#define LOG_LEVEL   DEBUG
 #define VERSION "v1.0.0"
 #define DEFAULT_PORT 9997
 
-
 chan_t* pub_chan;
+int bind_port = DEFAULT_PORT;
 
 // Frees the frame resources and zeroes out the pointer.
 void frame_dispose(frame_t* frame)
@@ -188,14 +191,29 @@ int start(int port)
     return 0;
 }
 
-int bind_port = DEFAULT_PORT;
 
 int *parse_args(int argc, char** argv){
   int p = bind_port;
   flag_int(&p, "port", "Port");
   flag_parse(argc, argv, VERSION);
   bind_port = p;
-  printf("         port:\t%d\n", bind_port);
+
+  dye(stderr, DYE_GREEN, DYE_BLACK);
+  fprintf(stderr, "         port:\t%d\n", bind_port);
+  char msg[100];
+  sprintf(msg, "         port:\t%d", bind_port);
+  fprintf(stderr, "%s", msg);
+  dye(stderr, DYE_RESET, DYE_RESET);
+  fprintf(stderr, "\n");
+
+
+if(false){
+  info("informational log");
+  notice("notice log");
+  warning("warning log");
+  error("error log");
+}
+
 }
 
 int main(int argc, char** argv){
