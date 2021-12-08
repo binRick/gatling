@@ -10,6 +10,7 @@
   "install": "make install",
   "uninstall": "make uninstall",
   "src": [
+    "src/gatling_flag.c",
     "src/chan.c",
     "src/chan.h",
     "src/gatling.c",

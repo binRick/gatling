@@ -132,8 +132,7 @@ void accepter_loop(int sock_fd)
         int addrlen = sizeof(client_addr);
 
         // Accept client connections.
-        client_fd = accept(sock_fd, (struct sockaddr*) &client_addr,
-            (uint *) &addrlen);
+        client_fd = accept(sock_fd, (struct sockaddr*) &client_addr, (int *) &addrlen);
         printf("%s:%d connected\n", inet_ntoa(client_addr.sin_addr),
             ntohs(client_addr.sin_port));
 
