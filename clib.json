@@ -30,7 +30,9 @@
     "Constellation/console-colors.c": "1.0.3",
     "willemt/file2str": "0.0.1",
     "clibs/timestamp": "0.0.2",
-    "clibs/timer": "1.0.0"
+    "clibs/timer": "1.0.0",
+    "tylertreat/chan": "0.0.4",
+    "trws/libdefer": "0.0.1"
   },
   "development": {
     "jwerle/libok": "*"
